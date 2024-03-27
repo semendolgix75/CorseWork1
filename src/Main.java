@@ -19,6 +19,7 @@ public class Main {
         employees[8] = new Employee("Slutskiy KE", 5, 76000);
         employees[9] = new Employee("Gribov KL", 2, 79000);
 
+
         System.out.println("Базовая сложность");
         System.out.println("\nВывести в консоль значения всех полей (toString))");
         inputEmployees();                   // (вывести в консоль значения всех полей (toString));
