@@ -7,7 +7,7 @@ import java.util.Objects;
 public class Employee {
 
        //Скрыть прямой доступ к полям класса Employee и добавить возможность получать значения полей (геттеры) и устанавливать значения полей отдела и зарплаты (сеттеры).
-       private String name; //ФИО
+       private String name;  //ФИО
        private int department;    //Отдел
        private int salary;         //Зарплата сотрудника
 

@@ -20,7 +20,7 @@ public class Main {
         employees[9] = new Employee("Gribov KL", 2, 79000);
 
         System.out.println("Базовая сложность");
-        System.out.println("\nвывести в консоль значения всех полей (toString))");
+        System.out.println("\nВывести в консоль значения всех полей (toString))");
         inputEmployees();                   // (вывести в консоль значения всех полей (toString));
         System.out.println("\nПосчитать сумму затрат на ЗП в месяц;");
         sumMoney();                         //Посчитать сумму затрат на ЗП в месяц;
@@ -37,16 +37,23 @@ public class Main {
 
         System.out.println("\nПроиндексировать зарплату (вызвать изменение зп у всех сотрудников на величину аргумента в %");
         indexSalary(1.2f);                  //Проиндексировать зарплату (вызвать изменение зп у всех сотрудников на величину аргумента в %)
-        System.out.println("\nСотрудника с минимальной зп");
-
+        System.out.println("\nСотрудник с минимальной зп в отделе");
         findMinSalaryDepartment(2);         //Сотрудника с минимальной зп;
+        System.out.println("\nСотрудник с минимальной зп в отделе");
         findMaxSalaryDepartment(3);         //Сотрудника с максимальной зп;
+        System.out.println("\nСумма затрат на зп по отделу");
+
         sumMoneySalaryDepartment(1);        // Сумму затрат на зп по отделу;
+        System.out.println("\nСредняя зп по отделу");
         averageSalaryDepartment(4);         //Среднюю зп по отделу (учесть, что количество людей в отделе отличается от employees.length);
+        System.out.println("\nПроиндексировать зарплату всех сотрудников отдела на процент, который приходит в качестве параметра");
         indexSalaryDepartment(1.3f, 1);// Проиндексировать зарплату всех сотрудников отдела на процент, который приходит в качестве параметра;
         printAllStatement();
-        printDepartment(1);                 // Всех сотрудников с зп больше (или равно) числа (распечатать id, фио и зп в консоль).
+        System.out.println("\nНапечатать всех сотрудников отдела (все данные, кроме отдела)");
+        printDepartment(1);                 // Напечатать всех сотрудников отдела (все данные, кроме отдела).
+        System.out.println("\nВывести сотрудников с зп меньше числа");
         printSalaryLower(90000);   //Всех сотрудников с зп меньше числа (распечатать id, фио и зп в консоль);
+        System.out.println("\nВывести сотрудников с зп больше (или равно) числа");
         printSalaryHigher(90000);   //Всех сотрудников с зп больше (или равно) числа (распечатать id, фио и зп в консоль).
     }
     //Создать статические методы, которые будут взаимодействовать с массивом из пункта 6
@@ -61,7 +68,7 @@ public class Main {
         }
     }
 
-        //Посчитать сумму затрат на ЗП в месяц;
+    //Посчитать сумму затрат на ЗП в месяц;
     public static int sumMoney() {
         int sumSalary = 0;
         for (Employee i : employees) {
@@ -103,9 +110,9 @@ public class Main {
     }
 
     public static void printAllStatement() {
-        System.out.println("ФИО             Отдел            Зарплата");
+        System.out.println("ФИО ");
         for (Employee employee : employees) {
-            System.out.println(employee.getName() + "         " + employee.getDepartment() + "           " + employee.getSalary());
+            System.out.println(employee.getName());
         }
     }
 
@@ -117,6 +124,7 @@ public class Main {
         for (Employee employee : employees) {
             int indexSalary = (int) (employee.getSalary() * index);
             employee.setSalary(indexSalary);
+            System.out.println(employee.toString());
         }
     }
 
@@ -190,44 +198,45 @@ public class Main {
             if (employee.getDepartment() == department) {
                 int indexSalary = (int) (employee.getSalary() * index);
                 employee.setSalary(indexSalary);
+                System.out.println(employee.getName() + "  " + employee.getSalary() + "р.");
             }
         }
     }
 
     //        Напечатать всех сотрудников отдела (все данные, кроме отдела).
     public static void printDepartment(int department) {
-        System.out.println("Сотрудники отдела: "+department);
+        System.out.println("Сотрудники отдела: " + department);
         for (Employee employee : employees) {
             if (employee.getDepartment() == department) {
-                System.out.println(employee.getName() );
+                System.out.println(employee.getName() + " зарплата " + employee.getSalary() + "р.");
 
             }
         }
     }
 
 
-//        Получить в качестве параметра число и вывести:
+    //        Получить в качестве параметра число и вывести:
 //        Всех сотрудников с зп меньше числа (распечатать id, фио и зп в консоль);
-public static void printSalaryLower(int minSalary) {
-    System.out.println("Сотрудники с зарплатой меньше: "+minSalary);
-    for (Employee employee : employees) {
-        if (employee.getSalary() < minSalary) {
-            System.out.println("Сотрудник: "+employee.getName()+" отдел - "+employee.getDepartment()+" зарплата "+employee.getSalary() );
+    public static void printSalaryLower(int minSalary) {
+        System.out.println("Сотрудники с зарплатой меньше: " + minSalary);
+        for (Employee employee : employees) {
+            if (employee.getSalary() < minSalary) {
+                System.out.println("Сотрудник: " + employee.getName() + " отдел - " + employee.getDepartment() + " зарплата " + employee.getSalary());
 
+            }
         }
     }
-}
 
-//        Всех сотрудников с зп больше (или равно) числа (распечатать id, фио и зп в консоль).
-public static void printSalaryHigher(int maxSalary) {
-    System.out.println("Сотрудники с зарплатой меньше: "+maxSalary);
-    for (Employee employee : employees) {
-        if (employee.getSalary() >= maxSalary) {
-            System.out.println("Сотрудник: "+employee.getName()+" отдел - "+employee.getDepartment()+" зарплата "+employee.getSalary() );
+    //        Всех сотрудников с зп больше (или равно) числа (распечатать id, фио и зп в консоль).
+    public static void printSalaryHigher(int maxSalary) {
+        System.out.println("Сотрудники с зарплатой меньше: " + maxSalary);
+        for (Employee employee : employees) {
+            if (employee.getSalary() >= maxSalary) {
+                System.out.println("Сотрудник: " + employee.getName() + " отдел - " + employee.getDepartment() + " зарплата " + employee.getSalary());
 
+            }
         }
     }
-}
 
 }
 
