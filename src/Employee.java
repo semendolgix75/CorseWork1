@@ -11,9 +11,9 @@ public class Employee {
     private String name;  //ФИО
     private int department;    //Отдел
     private int salary;         //Зарплата сотрудника
+    private int id;      //Добавить статическую переменную-счетчик, которая будет отвечать за id.
 
-    private static int id=0;      //Добавить статическую переменную-счетчик, которая будет отвечать за id.
-
+    private static int counter;
 
 
     //По-умолчанию все поля должны передавать через конструктор (кроме id)
@@ -21,14 +21,15 @@ public class Employee {
         this.name = name;
         this.department = department;
         this.salary = salary;
-        id++;
+        id = ++counter;
+
 
     }
 //Реализовать в классе Employee контракты equals и hashCode.
 
     @Override
     public String toString() {
-        return "Работник{" +
+        return "Работник{ id= " + id + " " +
                 "ФИО='" + name + '\'' +
                 ", отдел=" + department +
                 ", зарплата =" + salary +
@@ -43,15 +44,17 @@ public class Employee {
         return department;
     }
 
+    public int getId() {
+        return id;
+    }
+
     public int getSalary() {
         return salary;
     }
 
-    public void setName(String name) {
-        this.name = name;
-
+    public void setDepartment(int department) {
+        this.department = department;
     }
-
     public void setSalary(int salary) {
         this.salary = salary;
     }
@@ -59,12 +62,14 @@ public class Employee {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Employee employee)) return false;
-        return department == employee.department && salary == employee.salary && Objects.equals(name, employee.name);
+        if (o == null || getClass() != o.getClass()) return false;
+        Employee employee = (Employee) o;
+        return department == employee.department && salary == employee.salary && id == employee.id && Objects.equals(name, employee.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, department, salary);
+        return Objects.hash(name, department, salary, id);
     }
+
 }
