@@ -11,9 +11,9 @@ public class Employee {
     private String name;  //ФИО
     private int department;    //Отдел
     private int salary;         //Зарплата сотрудника
-    private int id;      //Добавить статическую переменную-счетчик, которая будет отвечать за id.
+    private int id;
 
-    private static int counter;
+    private static int counter; //Добавить статическую переменную-счетчик, которая будет отвечать за id.
 
 
     //По-умолчанию все поля должны передавать через конструктор (кроме id)
