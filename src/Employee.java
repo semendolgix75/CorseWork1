@@ -52,11 +52,15 @@ public class Employee {
         return salary;
     }
 
-    public void setDepartment(int department) {
-        this.department = department;
-    }
+
     public void setSalary(int salary) {
         this.salary = salary;
+    }
+
+    public void setNullEmployee(Employee employee) {
+        this.department = 0;
+        this.salary = 0;
+        this.name="null";
     }
 
     @Override
