@@ -57,12 +57,6 @@ public class Employee {
         this.salary = salary;
     }
 
-    public void setNullEmployee(Employee employee) {
-        this.department = 0;
-        this.salary = 0;
-        this.name="null";
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
